@@ -1,0 +1,89 @@
+[
+    {
+        "title": "Forecasting Stock Volatility with BERT",
+        "year": "Fall 2025",
+        "tags": ["NLP", "Transformers", "Fintech", "Group Project"],
+        "story_title": "The Hypothesis",
+        "description": "Financial news moves markets faster than humans can read. We fine-tuned a BERT transformer model to ingest unstructured financial headlines and classify stock price movements, bridging the gap between qualitative news and quantitative trading signals.",
+        "stack": ["Hugging Face", "PyTorch", "BERT", "Pandas"],
+        "result": "<strong>Method:</strong> Transfer Learning (Fine-Tuning) on Financial Corpus.",
+        "image": "images/bert_viz.gif", 
+        "link": "https://github.com/your-repo-link"
+    },
+    {
+        "title": "VibeRecommender: Mood-First Audio Engine",
+        "year": "Fall 2025",
+        "tags": ["Recommender Systems", "Product Engineering", "Independent Project"],
+        "story_title": "The User Problem",
+        "description": "To gain granular control over playlist energy, I built a content-based recommender that uses 7D audio feature vectors (danceability, valence, etc.) and time-aware personas. It complements traditional collaborative filtering by strictly adhering to the user's desired 'vibe'.",
+        "stack": ["Python", "Streamlit", "Scikit-Learn", "Weighted Cosine Sim"],
+        "result": "<strong>Feature:</strong> 'Vibe Roulette' uses datetime logic to automate context-aware playlists.",
+        "image": "images/vibe_cover.png", 
+        "link": "vibe-recommender/index.html" 
+    },
+    {
+        "title": "Predicting Game Engagement on Steam",
+        "year": "Fall 2025",
+        "tags": ["Recommender Systems", "Feature Engineering", "Group Project"],
+        "story_title": "The Engineering Challenge",
+        "description": "Steam allows refunds if a game is played for less than 2 hours. We engineered a recommender system that targets 'Commitment' (>2 hrs) rather than just clicks. We implemented a Hybrid Negative Sampling strategy (Unowned + Abandoned games) to maximize user retention.",
+        "stack": ["XGBoost", "Scikit-Learn", "Pandas", "NumPy"],
+        "result": "<strong>Outcome:</strong> 0.88 AUC. Achieved 79% accuracy in predicting refund-proof engagement.",
+        "image": "images/steam_preview.png", 
+        "link": "https://github.com/jessicabat/steam-engagement-predictor"
+    },
+    {
+        "title": "Hybrid U-Net for Climate Emulation",
+        "year": "Spring 2025",
+        "tags": ["Deep Learning", "Computer Vision", "Research", "Independent Project"],
+        "story_title": "The Research Goal",
+        "description": "Physics-based climate simulations are computationally expensive. I engineered a Hybrid U-Net + Fourier Neural Operator (FNO) to emulate complex climate dynamics 100x faster than traditional solvers.",
+        "stack": ["PyTorch", "FNO", "HPC", "Matplotlib"],
+        "result": "<strong>Impact:</strong> Kaggle Top 22/83. Reduced RMSE to 1.31 for global temp projections.",
+        "image": "images/climate.png", 
+        "link": "https://github.com/jessicabat/climate-emulation",
+        "extraLink": "assets/climate_report.pdf",
+        "extraText": "Read Project Report"
+    },
+    {
+        "title": "Meta Stock Quantitative Strategy",
+        "year": "Winter 2025",
+        "tags": ["Fintech", "Quant Strategy", "Independent Project"],
+        "story_title": "The Strategy",
+        "description": "Can machine learning identify market opportunities? I built a quantitative trading system for Meta (META) stock utilizing XGBoost to identify buy/sell signals based on volatility, RSI, and MACD indicators.",
+        "stack": ["Python", "XGBoost", "Pandas", "Backtesting"],
+        "result": "<strong>Performance:</strong> 3.82 Sharpe Ratio and $9,401 profit in historical backtesting.",
+        "image": "images/predictions.png",
+        "link": "https://tinyurl.com/metaproj"
+    },
+    {
+        "title": "Visualizing Algorithmic Bias in Healthcare",
+        "year": "Winter 2025",
+        "tags": ["Product Management", "AI Ethics", "Healthcare", "Group Project"],
+        "story_title": "The Ethical Insight",
+        "description": "AI models are often 'black boxes' that obscure discrimination. We built an interactive dashboard exposing how opioid prescription algorithms disproportionately deny care to Asian women, highlighting the need for algorithmic transparency.",
+        "stack": ["Interactive Viz", "UX Research", "Data Storytelling"],
+        "result": "<strong>Finding:</strong> Visualized a 79% denial rate disparity using real-world medical datasets.",
+        "image": "images/healthcare_heatmap.png"
+    },
+    {
+        "title": "Real-Time Robotics Classification",
+        "year": "Fall 2024",
+        "tags": ["Computer Vision", "Robotics", "Independent Project"],
+        "story_title": "The Implementation",
+        "description": "Real-time classification system for robotics hardware. I scraped a custom dataset and utilized Transfer Learning (MobileNetV2) to train a lightweight model capable of distinguishing between drones, rovers, and arms with limited data.",
+        "stack": ["TensorFlow", "Keras", "Web Scraping", "MobileNetV2"],
+        "result": "<strong>Metrics:</strong> 56% Improved Accuracy on custom scraped dataset.",
+        "image": "images/robot_arch.png" 
+    },
+    {
+        "title": "Quantifying the 'Home Court' Advantage",
+        "year": "Spring 2025",
+        "tags": ["Sports Analytics", "EDA", "Statistics", "Group Project"],
+        "story_title": "The Analysis",
+        "description": "Does the '12th Man' actually exist? We conducted a deep statistical analysis of 20,000+ NBA and NFL games to quantify the psychological and statistical impact of home crowds on point differentials.",
+        "stack": ["Python", "SciPy", "Plotly", "Statistical Testing"],
+        "result": "<strong>Result:</strong> Confirmed statistical significance (p < 0.001) of crowd impact on game outcomes.",
+        "image": "images/nba_viz.png"
+    }
+]
