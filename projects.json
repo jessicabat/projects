@@ -19,7 +19,7 @@
         "stack": ["Python", "Streamlit", "Scikit-Learn", "Weighted Cosine Sim"],
         "result": "<strong>Feature:</strong> 'Vibe Roulette' uses datetime logic to automate context-aware playlists.",
         "image": "images/vibe_cover.png", 
-        "link": "vibe-recommender/index.html" 
+        "link": "https://jessicabat.github.io/vibe-recommender/"
     },
     {
         "title": "Predicting Game Engagement on Steam",
