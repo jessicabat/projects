@@ -1,5 +1,18 @@
 [
     {
+        "title": "Wallet Risk & Behavior Analytics",
+        "year": "Winter 2026",
+        "tags": ["Fintech", "Fraud Detection", "Unsupervised + Supervised", "Independent Project"],
+        "story_title": "The Risk Question",
+        "description": "New crypto wallets launch with no track record, but platforms still need to decide: treat them like VIPs, normal users, or potential fraudsters? I combined unsupervised wallet clustering (~1.2M Ethereum wallets in BigQuery) with a supervised fraud model (ETFD dataset, XGBoost) to answer two questions: 'What kind of wallet is this?' and 'When should we step in?'. The project walks from segmentation to precision–recall tradeoffs and a cost model that translates fraud risk into concrete dollars.",
+        "stack": ["Python", "BigQuery", "XGBoost", "K-Means", "SHAP", "Plotly", "Looker Studio"],
+        "result": "<strong>Impact:</strong> ~75% reduction in simulated fraud loss by converting theft risk into a smaller, predictable support cost using behavior-only features.",
+        "image": "images/crypto_wallet_cover.png",
+        "link": "https://jessicabat.github.io/crypto-risk-scoring/",
+        "extraLink": "https://github.com/jessicabat/crypto-risk-scoring",
+        "extraLinkText": "View Code & README"
+    },
+    {
         "title": "VibeRecommender: Mood-First Audio Engine",
         "year": "Fall 2025",
         "tags": ["Recommender Systems", "Product Engineering", "Independent Project"],
