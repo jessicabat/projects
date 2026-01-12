@@ -1,16 +1,5 @@
 [
     {
-        "title": "Forecasting Stock Volatility with BERT",
-        "year": "Fall 2025",
-        "tags": ["NLP", "Transformers", "Fintech", "Group Project"],
-        "story_title": "The Hypothesis",
-        "description": "Financial news moves markets faster than humans can read. We fine-tuned a BERT transformer model to ingest unstructured financial headlines and classify stock price movements, bridging the gap between qualitative news and quantitative trading signals.",
-        "stack": ["Hugging Face", "PyTorch", "BERT", "Pandas"],
-        "result": "<strong>Method:</strong> Transfer Learning (Fine-Tuning) on Financial Corpus.",
-        "image": "images/bert_viz.gif", 
-        "link": "https://github.com/your-repo-link"
-    },
-    {
         "title": "VibeRecommender: Mood-First Audio Engine",
         "year": "Fall 2025",
         "tags": ["Recommender Systems", "Product Engineering", "Independent Project"],
@@ -20,6 +9,17 @@
         "result": "<strong>Feature:</strong> 'Vibe Roulette' uses datetime logic to automate context-aware playlists.",
         "image": "images/vibe_cover.png", 
         "link": "https://jessicabat.github.io/vibe-recommender/"
+    },
+    {
+        "title": "Forecasting Stock Volatility with BERT",
+        "year": "Fall 2025",
+        "tags": ["NLP", "Transformers", "Fintech", "Group Project"],
+        "story_title": "The Hypothesis",
+        "description": "Financial news moves markets faster than humans can read. We fine-tuned a BERT transformer model to ingest unstructured financial headlines and classify stock price movements, bridging the gap between qualitative news and quantitative trading signals.",
+        "stack": ["Hugging Face", "PyTorch", "BERT", "Pandas"],
+        "result": "<strong>Method:</strong> Transfer Learning (Fine-Tuning) on Financial Corpus.",
+        "image": "images/bert_viz.gif", 
+        "link": "https://github.com/your-repo-link"
     },
     {
         "title": "Predicting Game Engagement on Steam",
