@@ -34,7 +34,7 @@ h1, h2, h3, h4, .btn {
 .container {
     max-width: 1400px; /* Reading width */
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 64px;
 }
 
 /* --- NAVIGATION --- */
