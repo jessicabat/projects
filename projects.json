@@ -13,6 +13,19 @@
         "extraLinkText": "View Code & README"
     },
     {
+        "title": "Trading Operations Reconciliation Engine",
+        "year": "Winter 2026",
+        "tags": ["Fintech", "Operations Engineering", "System Design", "Independent Project"],
+        "story_title": "The Integrity Question",
+        "description": "In high-frequency markets, a mismatch between what the broker sees and what the internal book records isn't just a bug—it's a financial liability. I engineered a T+0 reconciliation engine to solve the 'Break' problem: catching execution discrepancies (fees, prices, phantom fills) before the trading day ends. By optimizing PostgreSQL bulk loads and designing 'Anti-Join' verification logic, the system reduces the time-to-detection from hours to seconds, turning manual fire-fighting into automated surveillance.",
+        "stack": ["Python", "PostgreSQL", "Bash Scripting", "Streamlit", "SQL (Anti-Joins)", "ETL Design"],
+        "result": "<strong>Impact:</strong> Achieved <15s runtime for 50k+ daily trades and 100% detection of simulated breaks, ensuring books are settlement-ready by market close.",
+        "image": "images/trade_ops_cover.png",
+        "link": "https://jessicabat.github.io/trade-ops-recon-platform/", 
+        "extraLink": "https://github.com/jessicabat/trade-ops-recon-platform",
+        "extraLinkText": "View Architecture & Code"
+    },
+    {
         "title": "VibeRecommender: Mood-First Audio Engine",
         "year": "Fall 2025",
         "tags": ["Recommender Systems", "Content-Based Modeling", "Music Discovery UX", "Independent Project"],
