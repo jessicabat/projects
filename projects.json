@@ -1,4 +1,18 @@
 [
+    
+    {
+        "title": "Payment Risk Insight Platform",
+        "year": "Winter 2026",
+        "tags": ["Payments", "Risk Decisioning", "Fraud Prevention", "Policy Optimization", "Independent Project"],
+        "story_title": "The Network Decision Question",
+        "description": "In a global payment network, every transaction must be evaluated in milliseconds: approve seamlessly, step up for review, or block to prevent fraud. This project simulates a network-scale risk decisioning system that translates model scores into concrete policy actions. The work focuses on defining approval thresholds, evaluating precision–recall tradeoffs under time-aware testing, and optimizing economic outcomes by balancing fraud loss against customer friction.",
+        "stack": ["Python", "Polars (High-Performance ETL)", "XGBoost", "SHAP", "Llama 3.1 (Local via Ollama)", "Plotly", "Streamlit"],
+        "result": "<strong>Impact:</strong> Identified an optimal network policy capturing 81.5% of fraudulent activity while maintaining 89.8% approval rates, maximizing net economic value under realistic operational constraints.",
+        "image": "images/payment_risk_cover.png",
+        "link": "https://jessicabat.github.io/payment-risk-insight-platform/",
+        "extraLink": "https://github.com/jessicabat/payment-risk-insight-platform",
+        "extraLinkText": "View Policy Framework & Artifacts"
+    },
     {
         "title": "Wallet Risk & Behavior Analytics",
         "year": "Winter 2026",
