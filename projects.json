@@ -1,5 +1,4 @@
 [
-    
     {
         "title": "Payment Risk Insight Platform",
         "year": "Winter 2026",
@@ -12,6 +11,19 @@
         "link": "https://jessicabat.github.io/payment-risk-insight-platform/",
         "extraLink": "https://github.com/jessicabat/payment-risk-insight-platform",
         "extraLinkText": "View Policy Framework & Artifacts"
+    },
+    {
+        "title": "Market Digest: Automated News Intelligence",
+        "year": "Winter 2026",
+        "tags": ["RAG", "Vibecoded with Claude Opus 4.6", "AI Engineering", "Prompt Engineering", "Independent Project"],
+        "story_title": "The Hallucination Problem",
+        "description": "Most LLM summaries fabricate claims — I measured it: only 44% of generated claims were actually supported by source articles. That's not a minor bug when you're summarizing financial news people act on. Market Digest is a fully automated daily intelligence pipeline that scrapes 18 global sources, generates three-tier summaries across 7 verticals, and lets users chat directly with the news via RAG. The core innovation was a negative-constraint prompt architecture that explicitly defines failure modes ('never speculate', 'never advise') instead of just positive instructions — pushing claim accuracy from 44% to 98%. This is also my first fully AI-built project: every line of code was written by Claude Opus 4.6 as my coding agent, the product website was generated on Readdy AI, and a GitHub Actions pipeline runs the whole thing autonomously every morning with zero human intervention.",
+        "stack": ["Python", "Llama 3.3 70B", "Groq API", "GitHub Actions","Streamlit",  "feedparser", "newspaper3k", "Claude Opus 4.6 (Agent)", "Readdy AI"],
+        "result": "<strong>Impact:</strong> +54 percentage point improvement in claim accuracy (44% → 98%) through prompt engineering. 0.8s TTFT, 18 sources, 7 topics, 40s full bot execution in GitHub Actions CI — fully autonomous since day one.",
+        "image": "images/market_digest_cover.png",
+        "link": "https://market-ai-digest.readdy.co",
+        "extraLink": "https://market-digest.streamlit.app/",
+        "extraLinkText": "Try the Live App"
     },
     {
         "title": "Wallet Risk & Behavior Analytics",
@@ -30,7 +42,7 @@
         "title": "Trading Operations Reconciliation Engine",
         "year": "Winter 2026",
         "tags": ["Fintech", "Operations Engineering", "System Design", "Independent Project"],
-        "story_title": "The Integrity Question",
+        "story_title": "The Integrity Problem",
         "description": "In high-frequency markets, a mismatch between what the broker sees and what the internal book records isn't just a bug—it's a financial liability. I engineered a T+0 reconciliation engine to solve the 'Break' problem: catching execution discrepancies (fees, prices, phantom fills) before the trading day ends. By optimizing PostgreSQL bulk loads and designing 'Anti-Join' verification logic, the system reduces the time-to-detection from hours to seconds, turning manual fire-fighting into automated surveillance.",
         "stack": ["Python", "PostgreSQL", "Bash Scripting", "Streamlit", "SQL (Anti-Joins)", "ETL Design"],
         "result": "<strong>Impact:</strong> Achieved <15s runtime for 50k+ daily trades and 100% detection of simulated breaks, ensuring books are settlement-ready by market close.",
@@ -43,7 +55,7 @@
         "title": "VibeRecommender: Mood-First Audio Engine",
         "year": "Fall 2025",
         "tags": ["Recommender Systems", "Content-Based Modeling", "Music Discovery UX", "Independent Project"],
-        "story_title": "The Vibe Question",
+        "story_title": "The Vibe Dilemma",
         "description": "Some days I want to tell my music app exactly what I mean: low-speech, high-energy, mid-tempo, not too acoustic — not just “chill pop”. Why this matters: Vibe Recommender explores how a pure content-based engine can turn that kind of request into a controllable listening surface. I built a 7D audio-feature engine with three modes: sliders for precise control, seed-from-song for “more like this” grounded in audio features, and Vibe Roulette, a time-of-day persona spin.",
         "stack": ["Python", "Streamlit", "Pandas & NumPy", "scikit-learn", "Weighted Cosine Similarity"],
         "result": "<strong>Feature:</strong> 'Vibe Roulette' uses datetime logic to automate context-aware playlists.",
