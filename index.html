@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jessica B | Portfolio</title>
+    <meta name="description" content="Data Science senior at UC San Diego specializing in ML, credit risk, fraud detection, and AI engineering. Graduating March 2026.">
+    <meta property="og:title" content="Jessica B | Data Science Portfolio">
+    <meta property="og:description" content="Data Science senior at UC San Diego specializing in ML, credit risk, fraud detection, and AI engineering. Graduating March 2026.">
+    <meta property="og:image" content="https://jessicabat.github.io/projects/images/flowscore.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jessica B | Data Science Portfolio">
+    <meta name="twitter:description" content="Data Science senior at UC San Diego specializing in ML, credit risk, fraud detection, and AI engineering.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -13,10 +21,15 @@
         <div class="logo">Jessica B.</div>
 
         <div class="nav-links">
-                <a href="#feed" class="nav-item">Work</a>
-                <a href="#about" class="nav-item">About</a>
-                <a href="#contact" class="nav-item" onclick="document.querySelector('footer').scrollIntoView({behavior: 'smooth'})">Contact</a>
+                <a href="#feed" class="nav-item" id="nav-work">Work</a>
+                <a href="#about" class="nav-item" id="nav-about">About</a>
+                <a href="#contact" class="nav-item" id="nav-contact">Contact</a>
         </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <header class="container hero">
@@ -27,14 +40,16 @@
             </h1>
             <p>
                 Hi, I'm Jessica. I'm a Data Science senior graduating soon. <br>
-                I strive to build tools that explain complex data, from financial risk to audio signals, using clean code and clear logic.
+                I build systems that turn messy financial data into decisions — credit underwriting, fraud detection, and risk analysis, using clean code and honest math.
             </p>
             
+            <a href="#feed" class="btn btn-primary hero-cta">View My Work &darr;</a>
+
             <div class="tech-stack-container">
                 <span class="tech-pill">Python</span>
                 <span class="tech-pill">PyTorch & TensorFlow</span>
                 <span class="tech-pill">SQL</span>
-                <span class="tech-pill">XGBoost & Scikit‑Learn</span>
+                <span class="tech-pill">Gradient-boosting & Scikit‑Learn</span>
                 <span class="tech-pill">Generative AI (LLMs)</span>
                 <span class="tech-pill">NLP & Transformers</span>
                 <span class="tech-pill">Data Visualization (Tableau, Power BI)</span>
@@ -104,7 +119,38 @@
     </footer>
 
 <script>
-        // 1. Fetch and Render Projects
+        // --- HELPERS ---
+
+        function getResultColorClass(result) {
+            if (result.includes('Impact'))      return 'result-impact';
+            if (result.includes('Discovery'))   return 'result-discovery';
+            if (result.includes('Performance')) return 'result-performance';
+            if (result.includes('Feature'))     return 'result-feature';
+            if (result.includes('Outcome'))     return 'result-outcome';
+            if (result.includes('Finding'))     return 'result-finding';
+            if (result.includes('Metrics'))     return 'result-metrics';
+            return '';
+        }
+
+        function copyEmail() {
+            const email = 'jessica.ybat@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = document.querySelector('.copy-email-btn');
+                const textEl = document.getElementById('email-text');
+                const iconEl = document.getElementById('copy-icon');
+                btn.classList.add('copied');
+                textEl.textContent = 'Copied!';
+                iconEl.textContent = '✓';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    textEl.textContent = email;
+                    iconEl.textContent = '📋';
+                }, 2000);
+            });
+        }
+
+        // --- FETCH & RENDER ---
+
         fetch('projects.json')
             .then(response => response.json())
             .then(projects => {
@@ -113,15 +159,15 @@
                 projects.forEach(p => {
                     const card = document.createElement('article');
                     card.className = 'project-card';
-                    
+
                     // Media Logic
                     let mediaHTML = '';
                     if (p.video) {
-                        // Added class 'zoomable' for the lightbox
                         mediaHTML = `<div class="media-container"><video src="${p.video}" class="zoomable" controls muted loop playsinline></video></div>`;
                     } else if (p.image) {
-                        mediaHTML = `<div class="media-container"><img src="${p.image}" class="zoomable" alt="${p.title}"></div>`;
-                    } 
+                        const altText = p.alt || p.title;
+                        mediaHTML = `<div class="media-container"><img src="${p.image}" class="zoomable" alt="${altText}" loading="lazy"></div>`;
+                    }
 
                     // Stack Pills
                     const stackPills = p.stack ? p.stack.map(tech => `<span class="stack-pill">${tech}</span>`).join('') : '';
@@ -136,13 +182,17 @@
                     }
 
                     // Result Logic
-                    let resultHTML = p.result ? `<div class="result-box">${p.result}</div>` : '';
+                    let resultHTML = '';
+                    if (p.result) {
+                        const colorClass = getResultColorClass(p.result);
+                        resultHTML = `<div class="result-box ${colorClass}">${p.result}</div>`;
+                    }
 
                     // Tags Logic
                     const tagsHTML = p.tags.map(t => {
                         let className = 'tag';
-                        if(t.includes('Group')) className += ' tag-group';
-                        if(t.includes('Independent')) className += ' tag-indie';
+                        if (t.includes('Group'))       className += ' tag-group';
+                        if (t.includes('Independent')) className += ' tag-indie';
                         return `<span class="${className}">${t}</span>`;
                     }).join('');
 
@@ -152,7 +202,6 @@
                             <span class="project-year">${p.year}</span>
                         </div>
                         <div class="project-tags">${tagsHTML}</div>
-                        
                         <div class="project-content">
                             <div class="project-text">
                                 <h4 class="story-title">${p.story_title || "The Overview"}</h4>
@@ -167,54 +216,100 @@
                     feed.appendChild(card);
                 });
 
-                // 2. Initialize Lightbox AFTER cards are rendered
                 initLightbox();
                 initScrollAnimation();
             })
             .catch(error => console.error('Error loading projects:', error));
 
-        // --- INTERACTIVE FEATURES ---
+        // --- LIGHTBOX ---
 
         function initLightbox() {
             const lightbox = document.getElementById('lightbox');
-            const content = document.getElementById('lightbox-content');
-            
-            // Add click listeners to all media
+            const content  = document.getElementById('lightbox-content');
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                content.innerHTML = '';
+            }
+
             document.querySelectorAll('.zoomable').forEach(media => {
                 media.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent video play on click if needed
+                    e.preventDefault();
                     lightbox.classList.add('active');
-                    
-                    // Clone the element into the lightbox
                     const clone = media.cloneNode(true);
-                    clone.controls = true; // Ensure controls are enabled in fullscreen
-                    clone.style.width = 'auto'; // Reset width for fullscreen
+                    clone.controls = true;
+                    clone.style.width = 'auto';
                     content.innerHTML = '';
                     content.appendChild(clone);
-                    
-                    if(clone.tagName === 'VIDEO') clone.play();
+                    if (clone.tagName === 'VIDEO') clone.play();
                 });
             });
 
-            // Close lightbox on click
-            lightbox.addEventListener('click', () => {
-                lightbox.classList.remove('active');
-                content.innerHTML = ''; // Stop video playback
+            lightbox.addEventListener('click', closeLightbox);
+
+            // Escape key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
             });
         }
+
+        // --- SCROLL ANIMATION ---
 
         function initScrollAnimation() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             }, { threshold: 0.1 });
 
             document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
         }
+
+        // --- BACK TO TOP ---
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- MOBILE NAV TOGGLE ---
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks  = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // --- ACTIVE NAV ON SCROLL ---
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll(`.nav-item[href="#${entry.target.id}"]`)
+                        .forEach(item => item.classList.add('active'));
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '-80px 0px -35% 0px' });
+
+        ['feed', 'about', 'contact'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) sectionObserver.observe(el);
+        });
     </script>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
     <div id="lightbox">
         <div id="lightbox-content"></div>
     </div>
