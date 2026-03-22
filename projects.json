@@ -1,167 +1,415 @@
 [
     {
-        "title": "FlowScore: Cash Flow Credit Scoring Engine",
+        "title": "MarketFoundry: Financial Knowledge Graph Pipeline",
+        "hook": "Earnings transcripts and SEC filings hold the real signal, but it's buried. I built a pipeline that reads financial documents and turns them into queryable knowledge graphs. It extracted 5.2× more facts than Gemini using a 4B parameter model.",
         "year": "Winter 2026",
-        "tags": ["Credit Risk", "Cash Flow Underwriting", "NLP", "ML Pipeline", "Independent Project"],
+        "tags": [
+            "Knowledge Graphs",
+            "Information Extraction",
+            "NLP",
+            "Neo4j",
+            "ML Pipeline",
+            "Serverless API"
+        ],
+        "story_title": "The Unstructured Finance Problem",
+        "description": "Market Foundry is a modular pipeline that transforms raw financial documents into queryable knowledge graphs. A stacked ensemble classifier (TF-IDF + KNN) routes documents across five types, LLM-powered topic extraction generates document-specific YAML schemas, and OneKE's multi-agent system extracts structured triples into Neo4j. Benchmarked against Gemini 3 Flash and Sonnet 4.6 on a Capital One SEC 8-K, Market Foundry extracted 5.2× more triples than Gemini and 2.1× more than Sonnet, with 3× the relation type diversity, using only a 4B parameter model. It was the only system to capture document-internal structure like linking exhibit numbers to merger agreements.",
+        "stack": [
+            "Python",
+            "PyTorch",
+            "Transformers",
+            "Qwen",
+            "Neo4j",
+            "FastAPI",
+            "Modal",
+            "scikit-learn",
+            "LangChain",
+            "Docker"
+        ],
+        "result": "<strong>Impact:</strong> 5.2× more triples than Gemini 3 Flash, 2.1× more than Sonnet 4.6, and 3× more unique relation types, all from a 4B parameter model. 964 unique entities and 423 relationship types extracted across 112 documents.",
+        "image": "images/marketfoundry.png",
+        "alt": "Market Foundry pipeline diagram showing document classification, topic extraction, schema-guided knowledge extraction, and Neo4j knowledge graph construction from financial documents",
+        "link": "https://jessicabat.github.io/market-foundry/",
+        "extraLink": "https://github.com/jessicabat/market-foundry",
+        "extraLinkText": "View on GitHub",
+        "domains": [
+            "NLP & AI Engineering",
+            "Financial ML"
+        ]
+    },
+    {
+        "title": "FlowScore: Cash Flow Credit Scoring Engine",
+        "hook": "76 million Americans are locked out of credit. The data trail needed to evaluate them simply does not exist. I built a cash flow underwriting engine to test whether transaction history could fill the gap.",
+        "year": "Winter 2026",
+        "tags": [
+            "Cash Flow Underwriting",
+            "Credit Risk",
+            "NLP",
+            "ML Pipeline",
+            "Independent Project"
+        ],
         "story_title": "The Credit Access Problem",
-        "description": "Traditional credit scores lock out 76 million Americans with thin files — not because they're risky, but because the data trail doesn't exist. FlowScore is a full cash flow underwriting pipeline: fine-tuned DistilBERT classifies 3.3M bank transactions into 21 categories, 45 behavioral features capture income stability, spending patterns, and obligation ratios, and a CatBoost model achieves 0.764 AUC — 11.2% above traditional scoring alone. The sharpest result is the fairness finding: thin-file borrowers are approved at 94.8% under FlowScore vs. 3.2% by traditional scoring — a 29.4x gap.",
-        "stack": ["Python", "Catboost", "DistilBERT", "Optuna", "SHAP", "scikit-learn", "Streamlit"],
+        "description": "FlowScore is a full cash flow underwriting pipeline: fine-tuned DistilBERT classifies 3.3M bank transactions into 21 categories, 45 behavioral features capture income stability, spending patterns, and obligation ratios, and a CatBoost model achieves 0.764 AUC, 11.2% above traditional scoring alone. The sharpest result is the fairness finding: thin-file borrowers are approved at 94.8% under FlowScore versus 3.2% by traditional scoring, a 29.4x gap that makes the access problem concrete.",
+        "stack": [
+            "Python",
+            "Catboost",
+            "DistilBERT",
+            "Optuna",
+            "SHAP",
+            "scikit-learn",
+            "Streamlit"
+        ],
         "result": "<strong>Impact:</strong> 30.4% reduction in default losses at 70% approval; thin-file consumers approved 29.4x more often than under traditional scoring",
         "image": "images/flowscore.png",
         "alt": "FlowScore dashboard comparing approval rates between traditional credit scoring and cash flow underwriting, highlighting a 29.4x improvement for thin-file borrowers",
         "link": "https://jessicabat.github.io/flowscore/",
         "extraLink": "https://flowscore.streamlit.app/",
-        "extraLinkText": "Try Live Demo"
+        "extraLinkText": "Try Live Demo",
+        "domains": [
+            "Financial ML"
+        ]
     },
     {
         "title": "Payment Risk Insight Platform",
+        "hook": "Every transaction: approve, review, or block, decided in milliseconds. I built a network-scale risk decisioning engine and proved the optimal policy captures 81.5% of fraud while maintaining 89.8% approval rates.",
         "year": "Winter 2026",
-        "tags": ["Payments", "Risk Decisioning", "Fraud Prevention", "Policy Optimization", "Independent Project"],
+        "tags": [
+            "Fraud Prevention",
+            "Risk Decisioning",
+            "Payments",
+            "Policy Optimization",
+            "Independent Project"
+        ],
         "story_title": "The Network Decision Question",
-        "description": "In a global payment network, every transaction must be evaluated in milliseconds: approve seamlessly, step up for review, or block to prevent fraud. This project simulates a network-scale risk decisioning system that translates model scores into concrete policy actions. The work focuses on defining approval thresholds, evaluating precision–recall tradeoffs under time-aware testing, and optimizing economic outcomes by balancing fraud loss against customer friction.",
-        "stack": ["Python", "Polars (High-Performance ETL)", "XGBoost", "SHAP", "Llama 3.1 (Local via Ollama)", "Plotly", "Streamlit"],
+        "description": "This project simulates a network-scale risk decisioning system that translates model scores into concrete policy actions. The pipeline defines approval thresholds, evaluates precision-recall tradeoffs under time-aware testing, and quantifies the economic cost of each policy choice in terms of fraud loss and customer friction.",
+        "stack": [
+            "Python",
+            "Polars (High-Performance ETL)",
+            "XGBoost",
+            "SHAP",
+            "Llama 3.1 (Local via Ollama)",
+            "Plotly",
+            "Streamlit"
+        ],
         "result": "<strong>Impact:</strong> Identified an optimal network policy capturing 81.5% of fraudulent activity while maintaining 89.8% approval rates, maximizing net economic value under realistic operational constraints.",
         "image": "images/payment_risk_cover.png",
         "alt": "Payment Risk Insight Platform dashboard showing transaction risk scores, approval thresholds, and precision-recall tradeoff curves for fraud detection policy optimization",
         "link": "https://jessicabat.github.io/payment-risk-insight-platform/",
         "extraLink": "https://github.com/jessicabat/payment-risk-insight-platform",
-        "extraLinkText": "View Policy Framework & Artifacts"
+        "extraLinkText": "View Policy Framework & Artifacts",
+        "domains": [
+            "Financial ML"
+        ]
     },
     {
         "title": "Market Digest: Automated News Intelligence",
+        "hook": "44% of AI-generated financial news claims were fabrications. I measured it, then engineered the architecture that brought accuracy to 98%.",
         "year": "Winter 2026",
-        "tags": ["RAG", "AI-assisted development", "AI Engineering", "Prompt Engineering", "Independent Project"],
+        "tags": [
+            "AI Engineering",
+            "Prompt Engineering",
+            "RAG",
+            "AI-assisted development",
+            "Independent Project"
+        ],
         "story_title": "The Hallucination Problem",
-        "description": "Most LLM summaries fabricate claims — I measured it: only 44% of generated claims were actually supported by source articles. That's not a minor bug when you're summarizing financial news people act on. Market Digest is a fully automated daily intelligence pipeline that scrapes 18 global sources, generates three-tier summaries across 7 verticals, and lets users chat directly with the news via RAG. The core innovation was a negative-constraint prompt architecture that explicitly defines failure modes ('never speculate', 'never advise') instead of just positive instructions — pushing claim accuracy from 44% to 98%. This is also my first fully AI-built project: every line of code was written by Claude Opus 4.6 as my coding agent, the product website was generated on Readdy AI, and a GitHub Actions pipeline runs the whole thing autonomously every morning with zero human intervention.",
-        "stack": ["Python", "Llama 3.3 70B", "Groq API", "GitHub Actions","Streamlit",  "feedparser", "newspaper3k", "Claude Code"],
-        "result": "<strong>Impact:</strong> +54 percentage point improvement in claim accuracy (44% → 98%) through prompt engineering. 0.8s TTFT, 18 sources, 7 topics, 40s full bot execution in GitHub Actions CI — fully autonomous since day one.",
+        "description": "Market Digest is a fully automated daily intelligence pipeline that scrapes 18 global sources, generates three-tier summaries across 7 verticals, and lets users query the news directly via RAG. The accuracy problem was the core challenge: only 44% of LLM-generated claims were supported by source articles. The fix was a negative-constraint prompt architecture that explicitly defines failure modes ('never speculate', 'never advise') alongside positive instructions, pushing accuracy from 44% to 98%. Every line of code was written by Claude Opus 4.6 as my coding agent, and a GitHub Actions pipeline runs the whole system autonomously every morning.",
+        "stack": [
+            "Python",
+            "Llama 3.3 70B",
+            "Groq API",
+            "GitHub Actions",
+            "Streamlit",
+            "feedparser",
+            "newspaper3k",
+            "Claude Code"
+        ],
+        "result": "<strong>Impact:</strong> +54 percentage point improvement in claim accuracy (44% → 98%) through prompt engineering. 0.8s TTFT, 18 sources, 7 topics, 40s full bot execution in GitHub Actions CI; fully autonomous since day one.",
         "image": "images/market_digest_cover.png",
         "alt": "Market Digest app interface showing automated financial news summaries across 7 verticals and a RAG-powered chat window for querying the day's news",
         "link": "https://jessicabat.github.io/market-digest/",
         "extraLink": "https://market-digest.streamlit.app/",
-        "extraLinkText": "Try the Live App"
+        "extraLinkText": "Try the Live App",
+        "domains": [
+            "NLP & AI Engineering"
+        ]
     },
     {
         "title": "Wallet Risk & Behavior Analytics",
+        "hook": "New crypto wallet, zero history. How do you tell a VIP from a fraudster? I clustered 1.2M Ethereum wallets and built the model that answers that in real time.",
         "year": "Winter 2026",
-        "tags": ["Fintech", "Fraud Detection", "Unsupervised + Supervised", "Independent Project"],
+        "tags": [
+            "Blockchain Analytics",
+            "Fraud Detection",
+            "Unsupervised + Supervised",
+            "Fintech",
+            "Independent Project"
+        ],
         "story_title": "The Risk Question",
-        "description": "New crypto wallets launch with no track record, but platforms still need to decide: treat them like VIPs, normal users, or potential fraudsters? I combined unsupervised wallet clustering (~1.2M Ethereum wallets in BigQuery) with a supervised fraud model (ETFD dataset, XGBoost) to answer two questions: 'What kind of wallet is this?' and 'When should we step in?'. The project walks from segmentation to precision–recall tradeoffs and a cost model that translates fraud risk into concrete dollars.",
-        "stack": ["Python", "BigQuery", "XGBoost", "K-Means", "SHAP", "Plotly", "Looker Studio"],
+        "description": "This project combines unsupervised wallet clustering (1.2M Ethereum wallets in BigQuery) with a supervised fraud model (XGBoost on the ETFD dataset) to answer two questions: what kind of wallet is this, and when should we intervene? The pipeline runs from segmentation through precision-recall tradeoffs to a cost model that converts fraud risk into concrete dollar figures.",
+        "stack": [
+            "Python",
+            "BigQuery",
+            "XGBoost",
+            "K-Means",
+            "SHAP",
+            "Plotly",
+            "Looker Studio"
+        ],
         "result": "<strong>Impact:</strong> ~75% reduction in simulated fraud loss by converting theft risk into a smaller, predictable support cost using behavior-only features.",
         "image": "images/crypto_wallet_cover.png",
         "alt": "Crypto wallet analytics dashboard showing Ethereum wallet behavior clusters, XGBoost fraud scores, and cost-model breakdown of fraud loss versus support intervention",
         "link": "https://jessicabat.github.io/crypto-risk-scoring/",
         "extraLink": "https://github.com/jessicabat/crypto-risk-scoring",
-        "extraLinkText": "View Code & README"
+        "extraLinkText": "View Code & README",
+        "domains": [
+            "Financial ML"
+        ]
     },
     {
         "title": "Trading Operations Reconciliation Engine",
+        "hook": "A mismatch between the broker's records and the internal book carries direct financial liability. I built the surveillance system that catches it in under 15 seconds.",
         "year": "Winter 2026",
-        "tags": ["Fintech", "Operations Engineering", "System Design", "Independent Project"],
+        "tags": [
+            "Trade Reconciliation",
+            "Operations Engineering",
+            "System Design",
+            "Fintech",
+            "Independent Project"
+        ],
         "story_title": "The Integrity Problem",
-        "description": "In high-frequency markets, a mismatch between what the broker sees and what the internal book records isn't just a bug—it's a financial liability. I engineered a T+0 reconciliation engine to solve the 'Break' problem: catching execution discrepancies (fees, prices, phantom fills) before the trading day ends. By optimizing PostgreSQL bulk loads and designing 'Anti-Join' verification logic, the system reduces the time-to-detection from hours to seconds, turning manual fire-fighting into automated surveillance.",
-        "stack": ["Python", "PostgreSQL", "Bash Scripting", "Streamlit", "SQL (Anti-Joins)", "ETL Design"],
+        "description": "This project is a T+0 reconciliation engine built to catch the 'Break' problem: execution discrepancies in fees, prices, and phantom fills before the trading day ends. Optimized PostgreSQL bulk loads and Anti-Join verification logic bring time-to-detection from hours to seconds, converting manual fire-fighting into automated surveillance.",
+        "stack": [
+            "Python",
+            "PostgreSQL",
+            "Bash Scripting",
+            "Streamlit",
+            "SQL (Anti-Joins)",
+            "ETL Design"
+        ],
         "result": "<strong>Impact:</strong> Achieved <15s runtime for 50k+ daily trades and 100% detection of simulated breaks, ensuring books are settlement-ready by market close.",
         "image": "images/trade_ops_cover.png",
         "alt": "Trading Operations Reconciliation Engine dashboard showing real-time break detection results for 50,000+ daily trades, with anti-join verification and settlement status",
         "link": "https://jessicabat.github.io/trade-ops-recon-platform/",
         "extraLink": "https://github.com/jessicabat/trade-ops-recon-platform",
-        "extraLinkText": "View Architecture & Code"
+        "extraLinkText": "View Architecture & Code",
+        "domains": [
+            "Financial ML"
+        ]
     },
     {
         "title": "VibeRecommender: Mood-First Audio Engine",
+        "hook": "Stop saying 'chill pop.' Tell your music app exactly what you want: high-energy, low-speech, mid-tempo. I built the 7-dimensional engine that actually understands that.",
         "year": "Fall 2025",
-        "tags": ["Recommender Systems", "Content-Based Modeling", "Music Discovery UX", "Independent Project"],
+        "tags": [
+            "Recommender Systems",
+            "Content-Based Filtering",
+            "Music Discovery UX",
+            "Independent Project"
+        ],
         "story_title": "The Vibe Dilemma",
-        "description": "Some days I want to tell my music app exactly what I mean: low-speech, high-energy, mid-tempo, not too acoustic — not just \"chill pop\". Why this matters: Vibe Recommender explores how a pure content-based engine can turn that kind of request into a controllable listening surface. I built a 7D audio-feature engine with three modes: sliders for precise control, seed-from-song for \"more like this\" grounded in audio features, and Vibe Roulette, a time-of-day persona spin.",
-        "stack": ["Python", "Streamlit", "Pandas & NumPy", "scikit-learn", "Weighted Cosine Similarity"],
+        "description": "Vibe Recommender is a content-based music recommendation engine built around 7 audio features. It offers three interaction modes: sliders for precise feature control, seed-from-song for audio-grounded recommendations, and Vibe Roulette, a time-of-day persona that auto-generates a playlist based on the current hour. The goal was a listening surface that responds to how you actually describe music, not just genre labels.",
+        "stack": [
+            "Python",
+            "Streamlit",
+            "Pandas & NumPy",
+            "scikit-learn",
+            "Weighted Cosine Similarity"
+        ],
         "result": "<strong>Feature:</strong> 'Vibe Roulette' uses datetime logic to automate context-aware playlists.",
         "image": "images/vibe_cover.png",
         "alt": "VibeRecommender interface showing 7-dimensional audio feature sliders for energy, tempo, and acousticness, alongside mood-based music recommendations",
         "link": "https://jessicabat.github.io/vibe-recommender/",
         "extraLink": "https://vibe-recommender.streamlit.app/",
-        "extraLinkText": "Try the Live App"
+        "extraLinkText": "Try the Live App",
+        "domains": [
+            "Systems & Analytics"
+        ]
     },
     {
         "title": "Forecasting Volatility: The BERT vs. FinBERT Experiment",
+        "hook": "The finance-specialized model was supposed to win. It did not, and the reason reshapes how you should think about domain expertise in AI.",
         "year": "Fall 2025",
-        "tags": ["NLP", "Transformers", "Fintech", "PyTorch", "Group Project"],
+        "tags": [
+            "Domain Adaptation",
+            "NLP",
+            "Transformers",
+            "Fintech",
+            "Group Project"
+        ],
         "story_title": "The Specialist Trap",
-        "description": "Industry logic suggests specialized models (FinBERT) always outperform generic ones. We challenged this assumption by fine-tuning both architectures to classify short-term stock volatility from unstructured headlines. The results were counter-intuitive: the financial-specific model developed a severe 'Optimism Bias' (High Recall, Low Precision), aggressively predicting growth even during downturns. The generic BERT acted as a better risk manager, ignoring noise to deliver superior risk-adjusted returns.",
-        "stack": ["Python", "PyTorch", "Hugging Face Transformers", "FinBERT", "Scikit-Learn", "Matplotlib", "Pandas"],
+        "description": "We fine-tuned both BERT and FinBERT to classify short-term stock volatility from financial headlines, then measured the results. The financial-specific model developed a severe Optimism Bias: high recall, low precision, aggressively predicting growth even during downturns. The generic BERT was the better risk manager, filtering noise to deliver superior risk-adjusted returns.",
+        "stack": [
+            "Python",
+            "PyTorch",
+            "Hugging Face Transformers",
+            "FinBERT",
+            "Scikit-Learn",
+            "Matplotlib",
+            "Pandas"
+        ],
         "result": "<strong>Discovery:</strong> Falsified the domain-superiority hypothesis. Generic BERT beat the specialized model in stability (Sharpe 0.010) by minimizing false positives.",
         "image": "images/bert_viz.gif",
-        "alt": "Animated visualization comparing BERT and FinBERT classification performance on financial headlines, showing FinBERT's optimism bias versus BERT's more conservative volatility predictions"
+        "alt": "Animated visualization comparing BERT and FinBERT classification performance on financial headlines, showing FinBERT's optimism bias versus BERT's more conservative volatility predictions",
+        "domains": [
+            "Financial ML",
+            "NLP & AI Engineering"
+        ]
     },
     {
         "title": "The Commitment Engine: Predicting Non-Refundable Playtime",
+        "hook": "On Steam, a sale followed by a refund is a lost transaction. Most recommenders optimize for clicks. We built the model that optimizes for commitment, and it knew the difference.",
         "year": "Fall 2025",
-        "tags": ["Recommender Systems", "Behavioral Analytics", "Imbalanced Learning", "Group Project"],
+        "tags": [
+            "Engagement Prediction",
+            "Recommender Systems",
+            "Behavioral Analytics",
+            "Imbalanced Learning",
+            "Group Project"
+        ],
         "story_title": "The Refund Dilemma",
-        "description": "On Steam, a purchase isn't a success if it triggers a refund (playtime < 2 hours). Most systems optimize for sales, ignoring this risk. We built a prediction engine designed to maximize 'Commitment' rather than just clicks. I architected a Hybrid Negative Sampling pipeline that feeds the model both 'Soft Negatives' (random unowned) and 'Hard Negatives' (abandoned purchases), allowing the model to distinguish between a future favorite game and a case of buyer's regret.",
-        "stack": ["XGBoost", "Hybrid Sampling", "ETL Pipeline", "Precision-Recall Optimization"],
+        "description": "We built a prediction engine targeting 'Commitment' rather than clicks: purchases that clear the 2-hour threshold and never get refunded. The key design decision was Hybrid Negative Sampling, feeding the model both Soft Negatives (random unowned games) and Hard Negatives (abandoned purchases) so it could learn the difference between a future favorite and a case of buyer's regret.",
+        "stack": [
+            "XGBoost",
+            "Hybrid Sampling",
+            "ETL Pipeline",
+            "Precision-Recall Optimization"
+        ],
         "result": "<strong>Outcome:</strong> Processed 5.15M interactions to achieve 0.88 AUC, successfully predicting refund-proof engagement.",
         "image": "images/steam_preview.png",
-        "alt": "Steam game commitment prediction model showing hybrid negative sampling pipeline architecture and precision-recall optimization results across 5.15 million user interactions"
+        "alt": "Steam game commitment prediction model showing hybrid negative sampling pipeline architecture and precision-recall optimization results across 5.15 million user interactions",
+        "domains": [
+            "Systems & Analytics"
+        ]
     },
     {
         "title": "Neural Earth: Hybrid Climate Emulation",
+        "hook": "Physics-based climate models take hours per simulation. I got it down to seconds with a neural architecture that generalizes to scenarios it has never seen.",
         "year": "Spring 2025",
-        "tags": ["Deep Learning", "Scientific ML", "Research", "Independent Project"],
+        "tags": [
+            "Climate Emulation",
+            "Deep Learning",
+            "Scientific ML",
+            "Research",
+            "Independent Project"
+        ],
         "story_title": "The Physics Bottleneck",
-        "description": "Physics-based climate models are computationally prohibitive for rapid scenario testing. I engineered a Hybrid U-Net + FNO architecture to bridge this gap, combining U-Net's local feature extraction with the Fourier Neural Operator's global spectral processing. To train this deep, memory-intensive model, I implemented Mixed-Precision (FP16) training and custom gradient clipping, enabling high-fidelity 100-year climate projections in seconds.",
-        "stack": ["PyTorch", "Fourier Neural Ops", "Mixed Precision", "HPC"],
+        "description": "I engineered a Hybrid U-Net + FNO architecture that combines U-Net's local feature extraction with the Fourier Neural Operator's global spectral processing. To train this deep, memory-intensive model on limited compute, I implemented Mixed-Precision (FP16) training and custom gradient clipping, enabling 100-year climate projections in seconds.",
+        "stack": [
+            "PyTorch",
+            "Fourier Neural Ops",
+            "Mixed Precision",
+            "HPC"
+        ],
         "result": "<strong>Performance:</strong> Achieved 1.31 RMSE on unseen future scenarios (SSP245), ranking in the Top 25% of the competition.",
         "image": "images/climate.png",
         "alt": "Neural Earth climate emulation model output showing U-Net FNO hybrid architecture predictions for 100-year global temperature and precipitation scenarios under SSP245",
         "link": "https://github.com/jessicabat/climate-emulation/blob/main/README.md",
         "extraLink": "https://github.com/jessicabat/projects/blob/main/assets/climate_report.pdf",
-        "extraLinkText": "View Project Report"
+        "extraLinkText": "View Project Report",
+        "domains": [
+            "Systems & Analytics"
+        ]
     },
     {
         "title": "XGBoost Algorithmic Trading",
+        "hook": "What if technical analysis could be systematized? I replaced chart-reading intuition with 15 engineered signals and a model that only bets when the edge is real. Sharpe 3.82.",
         "year": "Winter 2025",
-        "tags": ["Fintech", "Time-Series Forecasting", "Algorithmic Trading", "Independent Project"],
+        "tags": [
+            "Algorithmic Trading",
+            "Time-Series Forecasting",
+            "Fintech",
+            "Independent Project"
+        ],
         "story_title": "Signal vs. Noise",
-        "description": "Technical analysis often relies on subjective chart reading. I engineered an automated trading system that streams raw market data via the yfinance API and calculates 15+ technical indicators (RSI, MACD, Volatility). Using XGBoost, the model classifies short-term price direction, executing trades only when high-probability thresholds are met to ensure capital efficiency.",
-        "stack": ["Python", "XGBoost", "yfinance API", "Pandas", "Backtesting"],
+        "description": "I engineered an automated trading system that streams market data via the yfinance API and calculates 15+ technical indicators (RSI, MACD, Volatility). XGBoost classifies short-term price direction, and trades execute only when confidence clears a high-probability threshold, keeping capital concentrated on the clearest signals.",
+        "stack": [
+            "Python",
+            "XGBoost",
+            "yfinance API",
+            "Pandas",
+            "Backtesting"
+        ],
         "result": "<strong>Performance:</strong> Achieved a 3.82 Sharpe Ratio and significant alpha over Buy & Hold in historical simulations.",
         "image": "images/predictions.png",
         "alt": "XGBoost algorithmic trading system chart showing technical indicator signals, predicted price direction, and backtested performance versus buy-and-hold benchmark",
-        "link": "https://tinyurl.com/metaproj"
+        "link": "https://tinyurl.com/metaproj",
+        "domains": [
+            "Financial ML"
+        ]
     },
     {
         "title": "Visualizing Algorithmic Bias in Healthcare",
+        "hook": "An algorithm was denying care to Asian women at a 79% higher rate. Nobody knew because nobody looked. We built the tool that made it impossible to ignore.",
         "year": "Winter 2025",
-        "tags": ["LLM", "AI Ethics", "Healthcare", "Group Project"],
+        "tags": [
+            "Algorithmic Bias",
+            "AI Ethics",
+            "Healthcare",
+            "Data Storytelling",
+            "Group Project"
+        ],
         "story_title": "The Ethical Insight",
-        "description": "AI models are often 'black boxes' that obscure discrimination. We built an interactive dashboard exposing how opioid prescription algorithms disproportionately deny care to Asian women, highlighting the need for algorithmic transparency.",
-        "stack": ["Interactive Viz", "UX Research", "Data Storytelling"],
+        "description": "We built an interactive dashboard exposing how opioid prescription algorithms disproportionately deny care to Asian women. The project uses real-world medical datasets to visualize approval rates by race and gender, making the disparity concrete and hard to dismiss.",
+        "stack": [
+            "Interactive Viz",
+            "UX Research",
+            "Data Storytelling"
+        ],
         "result": "<strong>Finding:</strong> Visualized a 79% denial rate disparity using real-world medical datasets.",
         "image": "images/healthcare_heatmap.png",
-        "alt": "Interactive heatmap dashboard showing opioid prescription denial rates segmented by race and gender, exposing a 79% disparity against Asian women in algorithmic decision-making"
+        "alt": "Interactive heatmap dashboard showing opioid prescription denial rates segmented by race and gender, exposing a 79% disparity against Asian women in algorithmic decision-making",
+        "domains": [
+            "NLP & AI Engineering"
+        ]
     },
     {
         "title": "Real-Time Robotics Classification",
+        "hook": "No labeled dataset? No problem. I scraped one from scratch, then used transfer learning to build a real-time classifier that tells drones from rovers from robotic arms.",
         "year": "Fall 2024",
-        "tags": ["Computer Vision", "Robotics", "Independent Project"],
+        "tags": [
+            "Transfer Learning",
+            "Computer Vision",
+            "Robotics",
+            "Independent Project"
+        ],
         "story_title": "The Implementation",
-        "description": "Real-time classification system for robotics hardware. I scraped a custom dataset and utilized Transfer Learning (MobileNetV2) to train a lightweight model capable of distinguishing between drones, rovers, and arms with limited data.",
-        "stack": ["TensorFlow", "Keras", "Web Scraping", "MobileNetV2"],
+        "description": "I scraped a custom dataset from scratch and applied Transfer Learning with MobileNetV2 to train a lightweight classifier that distinguishes drones, rovers, and robotic arms in real time. The project was constrained by limited labeled data, which MobileNetV2's pretrained feature extraction was well-suited to handle.",
+        "stack": [
+            "TensorFlow",
+            "Keras",
+            "Web Scraping",
+            "MobileNetV2"
+        ],
         "result": "<strong>Metrics:</strong> 56% Improved Accuracy on custom scraped dataset.",
         "image": "images/robot_arch.png",
-        "alt": "Real-time robotics classification architecture diagram showing MobileNetV2 transfer learning pipeline for distinguishing drones, rovers, and robotic arms from a custom scraped dataset"
+        "alt": "Real-time robotics classification architecture diagram showing MobileNetV2 transfer learning pipeline for distinguishing drones, rovers, and robotic arms from a custom scraped dataset",
+        "domains": [
+            "Systems & Analytics"
+        ]
     },
     {
         "title": "Quantifying the 'Home Court' Advantage",
+        "hook": "Does the 12th Man actually move the needle? I ran the numbers on 20,000+ games to find out. The answer is statistically significant.",
         "year": "Spring 2025",
-        "tags": ["Sports Analytics", "EDA", "Statistics", "Group Project"],
+        "tags": [
+            "Sports Analytics",
+            "Statistical Testing",
+            "EDA",
+            "Group Project"
+        ],
         "story_title": "The Analysis",
-        "description": "Does the '12th Man' actually exist? We conducted a deep statistical analysis of 20,000+ NBA and NFL games to quantify the psychological and statistical impact of home crowds on point differentials.",
-        "stack": ["Python", "SciPy", "Plotly", "Statistical Testing"],
+        "description": "We ran a deep statistical analysis of 20,000+ NBA and NFL games, measuring how home crowd presence affects point differentials. The work covers psychological and statistical dimensions, testing whether the effect holds up to formal significance testing across two major sports.",
+        "stack": [
+            "Python",
+            "SciPy",
+            "Plotly",
+            "Statistical Testing"
+        ],
         "result": "<strong>Result:</strong> Confirmed statistical significance (p < 0.001) of crowd impact on game outcomes.",
         "image": "images/nba_viz.png",
-        "alt": "Statistical visualization of NBA and NFL home court advantage analysis across 20,000+ games, showing crowd impact on point differentials with p-value significance testing"
+        "alt": "Statistical visualization of NBA and NFL home court advantage analysis across 20,000+ games, showing crowd impact on point differentials with p-value significance testing",
+        "domains": [
+            "Systems & Analytics"
+        ]
     }
 ]

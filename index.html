@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jessica B | Portfolio</title>
-    <meta name="description" content="Data Science senior at UC San Diego specializing in ML, credit risk, fraud detection, and AI engineering. Graduating March 2026.">
+    <meta name="description" content="Data Science senior at UC San Diego building ML systems for credit risk, fraud detection, and AI engineering. Graduating March 2026.">
     <meta property="og:title" content="Jessica B | Data Science Portfolio">
-    <meta property="og:description" content="Data Science senior at UC San Diego specializing in ML, credit risk, fraud detection, and AI engineering. Graduating March 2026.">
+    <meta property="og:description" content="Data Science senior at UC San Diego building ML systems for credit risk, fraud detection, and AI engineering. Graduating March 2026.">
     <meta property="og:image" content="https://jessicabat.github.io/projects/images/flowscore.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jessica B | Data Science Portfolio">
-    <meta name="twitter:description" content="Data Science senior at UC San Diego specializing in ML, credit risk, fraud detection, and AI engineering.">
+    <meta name="twitter:description" content="Data Science senior at UC San Diego building ML systems for credit risk, fraud detection, and AI engineering.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 </head>
 <body>
 
-    <nav class="container nav-inner">
+    <nav>
+        <div class="nav-inner">
         <div class="logo">Jessica B.</div>
 
         <div class="nav-links">
+                <div id="navSlidingPill"></div>
                 <a href="#feed" class="nav-item" id="nav-work">Work</a>
                 <a href="#about" class="nav-item" id="nav-about">About</a>
                 <a href="#contact" class="nav-item" id="nav-contact">Contact</a>
@@ -30,78 +33,142 @@
             <span></span>
             <span></span>
         </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <span id="themeIcon">🌙</span>
+        </button>
+        </div>
     </nav>
 
     <header class="container hero">
         <div class="hero-text">
             <h1>
-                Transforming noise <br>
-                into <span class="highlight">clear signals.</span>
+                Where messy data <br>
+                becomes a <span class="highlight">decision.</span>
             </h1>
+            <p class="hero-typed-line"><span id="typed-focus"></span></p>
             <p>
-                Hi, I'm Jessica. I'm a Data Science senior graduating soon. <br>
-                I build systems that turn messy financial data into decisions — credit underwriting, fraud detection, and risk analysis, using clean code and honest math.
+                Hi, I'm Jessica. I'm a Data Science senior graduating soon.<br>
+                I build systems that take messy real-world data and turn it into something you can act on, whether that's a credit decision, a product recommendation, or a risk signal. Clean code and honest math.
             </p>
             
-            <a href="#feed" class="btn btn-primary hero-cta">View My Work &darr;</a>
+            <a href="#feed" class="btn btn-primary hero-cta magnet-btn" id="heroBtn">
+                <span class="magnet-label">View My Work ↓</span>
+            </a>
+
+            <div class="proof-strip">
+                <span>14 projects</span>
+                <span class="proof-dot">·</span>
+                <span>3 live apps</span>
+                <span class="proof-dot">·</span>
+                <span>1 competition placement</span>
+                <span class="proof-dot">·</span>
+                <span>Graduating March 2026</span>
+            </div>
 
             <div class="tech-stack-container">
                 <span class="tech-pill">Python</span>
-                <span class="tech-pill">PyTorch & TensorFlow</span>
                 <span class="tech-pill">SQL</span>
-                <span class="tech-pill">Gradient-boosting & Scikit‑Learn</span>
-                <span class="tech-pill">Generative AI (LLMs)</span>
-                <span class="tech-pill">NLP & Transformers</span>
-                <span class="tech-pill">Data Visualization (Tableau, Power BI)</span>
+                <span class="tech-pill">PyTorch</span>
+                <span class="tech-pill">XGBoost & Scikit-Learn</span>
+                <span class="tech-pill">Transformers & LLMs</span>
+                <span class="tech-pill">RAG</span>
+                <span class="tech-pill">Neo4j</span>
+                <span class="tech-pill">BigQuery</span>
+                <span class="tech-pill">BI Tools</span>
                 <span class="tech-pill">Product Analytics & Strategy</span>
             </div>
         </div>
 
         <div class="hero-visual">
-            <div class="data-sphere"></div>
+            <canvas id="hero-canvas"></canvas>
         </div>
     </header>
 
-    <main class="container project-feed" id="feed"></main>
+    <section class="container projects-section" id="feed">
+        <div class="feed-header fade-in-section">
+            <span class="section-eyebrow">SELECTED WORK</span>
+            <h2 class="feed-heading">Projects that measure.</h2>
+        </div>
+        <div class="domain-filters fade-in-section">
+            <button class="domain-filter-btn active" data-domain="all">All <span class="filter-count">14</span></button>
+            <button class="domain-filter-btn" data-domain="Financial ML">Financial ML <span class="filter-count">6</span></button>
+            <button class="domain-filter-btn" data-domain="NLP & AI Engineering">NLP & AI <span class="filter-count">3</span></button>
+            <button class="domain-filter-btn" data-domain="Systems & Analytics">Systems <span class="filter-count">5</span></button>
+        </div>
+
+        <div class="stack-area">
+            <div class="card-stack" id="cardStack"></div>
+            <div class="stack-controls">
+                <button class="stack-nav-btn" id="prevBtn">← Prev</button>
+                <span class="stack-counter" id="stackCounter"></span>
+                <button class="stack-nav-btn" id="nextBtn">Next →</button>
+            </div>
+        </div>
+    </section>
 
     <section id="about" class="container about-section">
         <div class="about-grid">
             <div class="about-text">
+                <span class="section-eyebrow">ABOUT ME</span>
                 <h2 class="section-title">Beyond the Notebook.</h2>
                 <p>
-                    I am a senior at <strong>UC San Diego</strong> (Class of 2026), pursuing a B.S. in Data Science with a <strong>Concentration in Machine Learning & AI</strong>.
+                    I'm a senior at <strong>UC San Diego</strong> (Class of 2026), earning a B.S. in Data Science with a concentration in <strong>Machine Learning & AI</strong> and a minor in Economics.
                 </p>
-                <p>
-                    My technical foundation is built on rigorous ML architectures—from Transformers to Unsupervised Clustering. But my obsession is <strong>Personalization</strong>. 
+                <p class="fade-in-section" style="transition-delay: 0.1s">
+                    My work sits at the intersection of financial systems and machine learning. Most of my projects start with a real problem that fintech and risk teams deal with: credit access, fraud decisioning, market intelligence, and work toward a system that's measurable and honest about its tradeoffs.
                 </p>
-                <p>
-                    I believe software should adapt to the user, not the other way around. Whether I'm engineering a music vibe engine or a fraud detection system, I do my best to use my background in <strong>AI and Economics</strong> to build products that feel intuitive, intelligent, and distinctly human.
+                <p class="fade-in-section" style="transition-delay: 0.2s">
+                    The economics background isn't incidental. I think about model outputs in terms of cost, fairness, and downstream incentive, not just accuracy. That framing shows up in how I build.
                 </p>
             </div>
             
-            <div class="about-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Education</span>
-                    <span class="stat-value">B.S. Data Science</span>
-                    <span class="stat-sub">Concentration in ML & AI</span>
-                    <span class="stat-sub" style="margin-top:4px; opacity:0.8">Minor in Economics</span>
+            <div class="about-skills-col">
+                <div class="domain-cards">
+                    <div class="domain-card domain-card--blue fade-in-section" style="transition-delay: 0.05s">
+                        <div class="domain-card-top">
+                            <span class="domain-dot" style="background:#3b82f6"></span>
+                            <h3 class="domain-name">Financial ML</h3>
+                            <span class="domain-count">6 projects</span>
+                        </div>
+                        <p class="domain-desc">Credit underwriting, fraud decisioning, and payment risk systems built for measurable outcomes.</p>
+                    </div>
+                    <div class="domain-card domain-card--purple fade-in-section" style="transition-delay: 0.1s">
+                        <div class="domain-card-top">
+                            <span class="domain-dot" style="background:#8b5cf6"></span>
+                            <h3 class="domain-name">NLP & AI Engineering</h3>
+                            <span class="domain-count">3 projects</span>
+                        </div>
+                        <p class="domain-desc">Knowledge graph extraction, RAG pipelines, and prompt architecture for financial text.</p>
+                    </div>
+                    <div class="domain-card domain-card--green fade-in-section" style="transition-delay: 0.15s">
+                        <div class="domain-card-top">
+                            <span class="domain-dot" style="background:#10b981"></span>
+                            <h3 class="domain-name">Systems & Analytics</h3>
+                            <span class="domain-count">5 projects</span>
+                        </div>
+                        <p class="domain-desc">Recommender engines, reconciliation systems, and statistical analysis that produce reproducible findings.</p>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Core Focus</span>
-                    <span class="stat-value">User-Centric AI</span>
-                    <span class="stat-sub">Personalization & Strategy</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Status</span>
-                    <span class="stat-value">Open to Work</span>
-                    <span class="stat-sub">Graduating March 2026</span>
+                <div class="about-stats skills-stats-row">
+                    <div class="stat-item fade-in-section" style="transition-delay: 0.1s">
+                        <span class="stat-label">Education</span>
+                        <span class="stat-value">B.S. Data Science</span>
+                        <span class="stat-sub">Concentration in ML & AI</span>
+                        <span class="stat-sub" style="margin-top:4px;opacity:0.8">Minor in Economics</span>
+                    </div>
+                    <div class="stat-item fade-in-section" style="transition-delay: 0.2s">
+                        <span class="stat-label">Status</span>
+                        <span class="stat-value">Open to Work</span>
+                        <span class="stat-sub">Graduating March 2026</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="container footer-content">
+        <div class="container footer-content fade-in-section">
+            <span class="section-eyebrow section-eyebrow--center">GET IN TOUCH</span>
             <h2 class="footer-title">Ready to decode the next challenge.</h2>
             
             <div class="footer-links">
@@ -118,8 +185,69 @@
         </div>
     </footer>
 
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+        <div id="projectModal" class="project-modal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-card" id="modalCard">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-img-wrap" id="modalImgWrap">
+                <img class="modal-img" id="modalImg" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <div class="modal-header-row">
+                    <div>
+                        <p class="modal-story-title" id="modalStoryTitle"></p>
+                        <h2 class="modal-title" id="modalTitle"></h2>
+                    </div>
+                    <span class="modal-year" id="modalYear"></span>
+                </div>
+                <div class="modal-tags" id="modalTags"></div>
+                <div class="modal-psi-block" id="modalProblem"></div>
+                <p class="modal-desc" id="modalDesc"></p>
+                <div class="modal-stack" id="modalStack"></div>
+                <div class="modal-result" id="modalResult"></div>
+                <div class="modal-actions" id="modalActions"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <div id="lightbox-content"></div>
+    </div>
+
 <script>
+        (function () {
+        const toggle    = document.getElementById('themeToggle');
+        const icon      = document.getElementById('themeIcon');
+        const stored    = localStorage.getItem('theme');
+        const prefersDk = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        function setDark(on) {
+            if (on) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
+            } else {
+            document.documentElement.removeAttribute('data-theme');
+            icon.textContent = '🌙';
+            localStorage.setItem('theme', 'light');
+            }
+        }
+        setDark(stored === 'dark' || (!stored && prefersDk));
+        toggle.addEventListener('click', () => {
+            setDark(document.documentElement.getAttribute('data-theme') !== 'dark');
+        });
+        })();
+
+
         // --- HELPERS ---
+
+        function getDomainStyle(domain) {
+            if (domain === 'Financial ML')         return { bg: 'rgba(59,130,246,0.10)',  color: '#1d4ed8', border: 'rgba(59,130,246,0.25)'  };
+            if (domain === 'NLP & AI Engineering') return { bg: 'rgba(139,92,246,0.10)', color: '#6d28d9', border: 'rgba(139,92,246,0.25)' };
+            if (domain === 'Systems & Analytics')  return { bg: 'rgba(16,185,129,0.10)', color: '#065f46', border: 'rgba(16,185,129,0.25)' };
+            return { bg: '#f3f4f6', color: '#4b5563', border: 'transparent' };
+        }
 
         function getResultColorClass(result) {
             if (result.includes('Impact'))      return 'result-impact';
@@ -152,124 +280,324 @@
         // --- FETCH & RENDER ---
 
         fetch('projects.json')
-            .then(response => response.json())
-            .then(projects => {
-                const feed = document.getElementById('feed');
+            .then(r => r.json())
+            .then(projects => { initProjectStack(projects); initDomainFilters(projects); })
+            .catch(err => console.error('Error loading projects:', err));
 
-                projects.forEach(p => {
-                    const card = document.createElement('article');
-                    card.className = 'project-card';
+        // --- PROJECT STACK ---
 
-                    // Media Logic
-                    let mediaHTML = '';
-                    if (p.video) {
-                        mediaHTML = `<div class="media-container"><video src="${p.video}" class="zoomable" controls muted loop playsinline></video></div>`;
-                    } else if (p.image) {
-                        const altText = p.alt || p.title;
-                        mediaHTML = `<div class="media-container"><img src="${p.image}" class="zoomable" alt="${altText}" loading="lazy"></div>`;
-                    }
+        let _current   = 0;
+        let _cardEls   = [];
+        let _navLocked = false;
+        let _navReady  = false;
 
-                    // Stack Pills
-                    const stackPills = p.stack ? p.stack.map(tech => `<span class="stack-pill">${tech}</span>`).join('') : '';
+        function accentFor(tags) {
+            const t = tags.join(' ').toLowerCase();
+            if (t.includes('credit') || t.includes('payment') || t.includes('fintech') || t.includes('cash') || t.includes('trade') || t.includes('algorithmic')) return '#3b82f6';
+            if (t.includes('nlp') || t.includes('transformer') || t.includes('llm') || t.includes('rag') || t.includes('knowledge')) return '#8b5cf6';
+            if (t.includes('recommender') || t.includes('music') || t.includes('engagement')) return '#f59e0b';
+            if (t.includes('deep') || t.includes('neural') || t.includes('climate')) return '#10b981';
+            if (t.includes('computer') || t.includes('robot') || t.includes('transfer')) return '#06b6d4';
+            if (t.includes('sports') || t.includes('statistical')) return '#f97316';
+            return '#2563eb';
+        }
 
-                    // Button Logic
-                    let buttonsHTML = '';
-                    if (p.link) {
-                        buttonsHTML += `<a href="${p.link}" target="_blank" class="btn btn-primary">View Project &rarr;</a>`;
-                    }
-                    if (p.extraLink && p.extraLinkText) {
-                        buttonsHTML += `<a href="${p.extraLink}" target="_blank" class="btn btn-secondary">${p.extraLinkText}</a>`;
-                    }
+        function dcDomainRgb(domain) {
+            if (domain === 'Financial ML')         return { rgb: '59,130,246',  hex: '#3b82f6' };
+            if (domain === 'NLP & AI Engineering') return { rgb: '139,92,246',  hex: '#8b5cf6' };
+            if (domain === 'Systems & Analytics')  return { rgb: '16,185,129',  hex: '#10b981' };
+            return { rgb: '100,116,139', hex: '#64748b' };
+        }
 
-                    // Result Logic
-                    let resultHTML = '';
-                    if (p.result) {
-                        const colorClass = getResultColorClass(p.result);
-                        resultHTML = `<div class="result-box ${colorClass}">${p.result}</div>`;
-                    }
+        function isLive(p) {
+            return !!(p.extraLinkText && (p.extraLinkText.toLowerCase().includes('live') || p.extraLinkText.toLowerCase().includes('demo')));
+        }
 
-                    // Tags Logic
-                    const tagsHTML = p.tags.map(t => {
-                        let className = 'tag';
-                        if (t.includes('Group'))       className += ' tag-group';
-                        if (t.includes('Independent')) className += ' tag-indie';
-                        return `<span class="${className}">${t}</span>`;
-                    }).join('');
+        function buildCardElements(projects) {
+            const stack = document.getElementById('cardStack');
+            stack.innerHTML = '';
+            _current = 0;
+            _cardEls = projects.map(p => {
+                const el     = document.createElement('div');
+                el.className = 'display-card';
+                const accent = accentFor(p.tags);
+                const hook   = p.hook || p.description.split(/\.\s|—/)[0].replace(/\.$/, '') + '.';
+                const primaryDomain = (p.domains || [])[0];
+                const dc     = dcDomainRgb(primaryDomain);
+                const live   = isLive(p);
 
-                    card.innerHTML = `
-                        <div class="project-header">
-                            <h2 class="project-title">${p.title}</h2>
-                            <span class="project-year">${p.year}</span>
-                        </div>
-                        <div class="project-tags">${tagsHTML}</div>
-                        <div class="project-content">
-                            <div class="project-text">
-                                <h4 class="story-title">${p.story_title || "The Overview"}</h4>
-                                <p>${p.description}</p>
-                                <div class="stack-container">${stackPills}</div>
-                                ${resultHTML}
-                                <div class="project-links">${buttonsHTML}</div>
+                el.innerHTML = `
+                    <div class="dc-bg" ${p.image ? `style="background-image:url('${p.image}')"` : ''}></div>
+                    <div class="dc-overlay"></div>
+                    <span class="dc-expand-hint">↗ Expand</span>
+                    <div class="dc-content">
+                        <div class="dc-top">
+                            <span class="dc-icon" style="background:${accent}">${p.title.charAt(0)}</span>
+                            <div class="dc-top-tags">
+                                ${primaryDomain ? `<span class="dc-domain-chip" style="background:rgba(${dc.rgb},0.18);color:${dc.hex}">${primaryDomain}</span>` : ''}
+                                <span class="dc-tag">${p.tags[0] || ''}</span>
                             </div>
                         </div>
-                        ${mediaHTML}
-                    `;
-                    feed.appendChild(card);
-                });
+                        <p class="dc-title">${p.title}</p>
+                        <p class="dc-desc">${hook}</p>
+                        <div class="dc-meta">
+                            <span class="dc-year">${p.year}</span>
+                            ${live ? '<span class="dc-live"><span class="dc-live-dot"></span>Live</span>' : ''}
+                        </div>
+                    </div>
+                `;
 
-                initLightbox();
-                initScrollAnimation();
-            })
-            .catch(error => console.error('Error loading projects:', error));
+                el.addEventListener('click', () => openProjectModal(p));
+                stack.appendChild(el);
+                return el;
+            });
+            renderStack();
+        }
 
-        // --- LIGHTBOX ---
+        function renderStack() {
+            const counter = document.getElementById('stackCounter');
+            const total   = _cardEls.length;
+            if (!total) { counter.textContent = '—'; return; }
+            const nextIdx = (_current + 1) % total;
+            _cardEls.forEach((card, i) => {
+                const wasNext  = card.classList.contains('pos-next');
+                const wasFront = card.classList.contains('pos-front');
+                card.classList.remove('pos-front', 'pos-next', 'pos-hidden');
+                if (i === _current) {
+                    card.classList.add('pos-front');
+                } else if (i === nextIdx) {
+                    if (!wasNext && !wasFront) {
+                        card.style.transition = 'none';
+                        card.style.transform  = 'translateX(calc(100% + 10px))';
+                        card.style.opacity    = '0';
+                        card.getBoundingClientRect();
+                        card.style.transition = '';
+                        card.style.transform  = '';
+                        card.style.opacity    = '';
+                    }
+                    card.classList.add('pos-next');
+                } else {
+                    card.classList.add('pos-hidden');
+                }
+            });
+            counter.textContent = `${_current + 1} / ${total}`;
+        }
 
-        function initLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            const content  = document.getElementById('lightbox-content');
+        function navigateStack(dir) {
+            if (_navLocked || _cardEls.length === 0) return;
+            _navLocked = true;
+            _current = dir > 0
+                ? (_current + 1) % _cardEls.length
+                : (_current - 1 + _cardEls.length) % _cardEls.length;
+            renderStack();
+            setTimeout(() => { _navLocked = false; }, 600);
+        }
 
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                content.innerHTML = '';
+        function initProjectStack(projects) {
+            buildCardElements(projects);
+            if (_navReady) return;
+            _navReady = true;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const stack   = document.getElementById('cardStack');
+            prevBtn.addEventListener('click', () => navigateStack(-1));
+            nextBtn.addEventListener('click', () => navigateStack(1));
+            stack.addEventListener('wheel', (e) => {
+                const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+                if (Math.abs(delta) < 5) return;
+                e.preventDefault();
+                navigateStack(delta > 0 ? 1 : -1);
+            }, { passive: false });
+            let touchStartX = 0, touchStartY = 0;
+            stack.addEventListener('touchstart', e => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+            stack.addEventListener('touchmove', e => {
+                const dx = Math.abs(e.touches[0].clientX - touchStartX);
+                const dy = Math.abs(e.touches[0].clientY - touchStartY);
+                if (dx > dy) e.preventDefault();
+            }, { passive: false });
+            stack.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(dx) < 40) return;
+                navigateStack(dx < 0 ? 1 : -1);
+            }, { passive: true });
+        }
+
+        // --- DOMAIN ACCENT COLORS FOR NAV ---
+        const NAV_DOMAIN_COLORS = {
+            'Financial ML':         { border: 'rgba(59,130,246,0.55)',  pill: 'rgba(59,130,246,0.14)'  },
+            'NLP & AI Engineering': { border: 'rgba(139,92,246,0.55)',  pill: 'rgba(139,92,246,0.14)'  },
+            'Systems & Analytics':  { border: 'rgba(16,185,129,0.55)',  pill: 'rgba(16,185,129,0.14)'  },
+        };
+        let _activeDomainFilter = 'all';
+
+        function updateNavDomainAccent() {
+            const nav        = document.querySelector('nav');
+            const workItem   = document.getElementById('nav-work');
+            const slidingPill = document.getElementById('navSlidingPill');
+            if (!nav) return;
+
+            const isAtWork    = workItem && workItem.classList.contains('active');
+            const domainColor = NAV_DOMAIN_COLORS[_activeDomainFilter];
+
+            if (isAtWork && domainColor) {
+                nav.style.borderColor = domainColor.border;
+                if (slidingPill) slidingPill.style.backgroundColor = domainColor.pill;
+            } else {
+                nav.style.borderColor = '';
+                if (slidingPill) slidingPill.style.backgroundColor = '';
+            }
+        }
+
+        function initSlidingPill() {
+            const pill     = document.getElementById('navSlidingPill');
+            const navLinks = document.querySelector('.nav-links');
+            if (!pill || !navLinks) return;
+
+            function movePill() {
+                const activeItem = document.querySelector('.nav-item.active');
+                if (!activeItem) { pill.style.opacity = '0'; return; }
+
+                const linksRect  = navLinks.getBoundingClientRect();
+                const activeRect = activeItem.getBoundingClientRect();
+                const x = activeRect.left - linksRect.left;
+
+                pill.style.width     = activeRect.width + 'px';
+                pill.style.transform = `translateY(-50%) translateX(${x}px)`;
+                pill.style.opacity   = '1';
+                updateNavDomainAccent();
             }
 
-            document.querySelectorAll('.zoomable').forEach(media => {
-                media.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    lightbox.classList.add('active');
-                    const clone = media.cloneNode(true);
-                    clone.controls = true;
-                    clone.style.width = 'auto';
-                    content.innerHTML = '';
-                    content.appendChild(clone);
-                    if (clone.tagName === 'VIDEO') clone.play();
+            // Watch for .active class changes on nav items
+            const mo = new MutationObserver(movePill);
+            document.querySelectorAll('.nav-item').forEach(item =>
+                mo.observe(item, { attributes: true, attributeFilter: ['class'] })
+            );
+
+            // Set initial position instantly (no spring on first paint)
+            pill.style.transition = 'none';
+            movePill();
+            requestAnimationFrame(() => { pill.style.transition = ''; });
+        }
+
+        function initDomainFilters(allProjects) {
+            document.querySelectorAll('.domain-filter-btn').forEach(btn => {
+                const domain  = btn.dataset.domain;
+                const countEl = btn.querySelector('.filter-count');
+                if (countEl && domain !== 'all') {
+                    countEl.textContent = allProjects.filter(p => (p.domains || []).includes(domain)).length;
+                }
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.domain-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    _activeDomainFilter = domain;
+                    updateNavDomainAccent();
+                    const filtered = domain === 'all' ? allProjects : allProjects.filter(p => (p.domains || []).includes(domain));
+                    buildCardElements(filtered);
                 });
-            });
-
-            lightbox.addEventListener('click', closeLightbox);
-
-            // Escape key to close
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeLightbox();
             });
         }
 
-        // --- SCROLL ANIMATION ---
+        // --- PROJECT MODAL ---
+        function openProjectModal(p) {
+            const modal = document.getElementById('projectModal');
 
-        function initScrollAnimation() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
+            // Image
+            const imgWrap = document.getElementById('modalImgWrap');
+            const img     = document.getElementById('modalImg');
+            if (p.image) { img.src = p.image; img.alt = p.alt || p.title; imgWrap.style.display = ''; }
+            else { imgWrap.style.display = 'none'; }
 
-            document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+            // Header
+            document.getElementById('modalStoryTitle').textContent = p.story_title || '';
+            document.getElementById('modalTitle').textContent      = p.title;
+            document.getElementById('modalYear').textContent       = p.year;
+
+            // Domain badge(s) + Tags
+            const domainBadges = (p.domains || []).map(d => {
+                const ds = getDomainStyle(d);
+                return `<span class="modal-domain-badge" style="background:${ds.bg};color:${ds.color};border-color:${ds.border}">${d}</span>`;
+            }).join('');
+            document.getElementById('modalTags').innerHTML = domainBadges + p.tags.map(t => {
+                let cls = 'tag';
+                if (t.includes('Group'))       cls += ' tag-group';
+                if (t.includes('Independent')) cls += ' tag-indie';
+                return `<span class="${cls}">${t}</span>`;
+            }).join('');
+
+            // ── PROBLEM ──────────────────────────────────────────
+            const problemEl = document.getElementById('modalProblem');
+            if (problemEl) {
+                problemEl.innerHTML = p.hook
+                    ? `<div class="psi-row problem-box">
+                        <span class="psi-label">🔴 THE PROBLEM</span>
+                        <p class="psi-text">${p.hook}</p>
+                    </div>`
+                    : '';
+            }
+
+            // ── SOLUTION ─────────────────────────────────────────
+            const descEl = document.getElementById('modalDesc');
+            descEl.innerHTML = p.description
+                ? `<span class="psi-label solution-label">🔵 THE SOLUTION</span>${p.description}`
+                : '';
+
+            // Stack pills
+            document.getElementById('modalStack').innerHTML = (p.stack || [])
+                .map(s => `<span class="stack-pill">${s}</span>`).join('');
+
+            // ── IMPACT ───────────────────────────────────────────
+            const resultEl = document.getElementById('modalResult');
+            resultEl.innerHTML = p.result
+                ? `<div class="psi-row">
+                    <span class="psi-label impact-label">🟢 THE IMPACT</span>
+                    <div class="result-box ${getResultColorClass(p.result)}">${p.result}</div>
+                </div>`
+                : '';
+
+            // Links
+            let links = '';
+            if (p.link)                        links += `<a href="${p.link}" target="_blank" class="btn btn-primary">View Project →</a>`;
+            if (p.extraLink && p.extraLinkText) links += `<a href="${p.extraLink}" target="_blank" class="btn btn-secondary">${p.extraLinkText}</a>`;
+            document.getElementById('modalActions').innerHTML = links;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            const card  = document.getElementById('modalCard');
+            card.style.animation = 'modalScaleDown 0.22s cubic-bezier(0.4, 0, 1, 1) forwards';
+            modal.querySelector('.modal-backdrop').style.animation = 'modalFadeOut 0.22s ease forwards';
+            setTimeout(() => {
+                modal.classList.remove('active');
+                card.style.animation = '';
+                modal.querySelector('.modal-backdrop').style.animation = '';
+                document.body.style.overflow = '';
+            }, 220);
+        }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'modalBackdrop' || e.target.closest('#modalClose'))
+                closeProjectModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('projectModal');
+            if (e.key === 'Escape' && modal && modal.classList.contains('active'))
+                closeProjectModal();
+        });
 
         // --- BACK TO TOP ---
 
         const backToTop = document.getElementById('backToTop');
+        const navEl = document.querySelector('nav');
         window.addEventListener('scroll', () => {
             backToTop.classList.toggle('visible', window.scrollY > 400);
+            navEl.classList.toggle('scrolled', window.scrollY > 20);
         });
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -279,6 +607,7 @@
 
         const hamburger = document.getElementById('hamburger');
         const navLinks  = document.querySelector('.nav-links');
+
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('open');
@@ -292,6 +621,382 @@
             });
         });
 
+        /* --- HERO CANVAS: NEURAL EMBEDDING STREAM v3 --- */
+        function initHeroCanvas() {
+        const canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        const LAYERS       = [3, 5, 6, 5, 3];
+        const LAYER_LABELS = ['RAW DATA', 'FEATURES', 'EMBED', 'SIGNAL', 'OUTPUT'];
+        let nodes = [], conns = [], tokens = [];
+
+        function build() {
+            nodes = []; conns = [];
+            const nL = LAYERS.length;
+            const xPad = 0.13, yPad = 0.16;
+            LAYERS.forEach((count, li) => {
+            for (let ni = 0; ni < count; ni++) {
+                const xF   = xPad + (li / (nL - 1)) * (1 - 2 * xPad);
+                const span = count > 1 ? count - 1 : 1;
+                const yF   = yPad + (ni / span) * (1 - 2 * yPad);
+                nodes.push({ li, ni, count, xF, yF, phase: Math.random() * Math.PI * 2, act: 0 });
+            }
+            });
+            nodes.forEach((a, i) =>
+            nodes.forEach((b, j) => {
+                if (b.li === a.li + 1)
+                conns.push({ from: i, to: j, pulses: [], next: 20 + Math.random() * 160 });
+            })
+            );
+        }
+
+        const TOKEN_LABELS = [
+            'FICO', 'LTV', 'FRAUD', 'RSI', 'AUC',
+            'APR',  'RISK','CHURN', '0.87','-1.2',
+            'NLP',  'P/L', 'ROC',  'CDS'
+        ];
+        function buildTokens() {
+            tokens = TOKEN_LABELS.map(label => ({
+            label,
+            x: Math.random() * 0.09,
+            y: 0.1 + Math.random() * 0.8,
+            vx: 0.00045 + Math.random() * 0.0004,
+            vy: (Math.random() - 0.5) * 0.0007,
+            alpha: 0.28 + Math.random() * 0.28,
+            }));
+        }
+
+        // Animated output confidence bars
+        const OUT_LABELS = ['APPROVE', 'REVIEW', 'DENY'];
+        let outBars = OUT_LABELS.map(() => ({ val: Math.random(), target: Math.random() }));
+        function tickBars() {
+            outBars.forEach(b => {
+            if (Math.random() < 0.007) b.target = 0.1 + Math.random() * 0.88;
+            b.val += (b.target - b.val) * 0.025;
+            });
+        }
+
+        function resize() {
+            canvas.width  = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            build(); buildTokens();
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function pal() {
+            const dk = document.documentElement.getAttribute('data-theme') === 'dark'
+                    || (!document.documentElement.getAttribute('data-theme')
+                        && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            return {
+            node:       dk ? '#a78bfa' : '#7c3aed',
+            glow:       dk ? 'rgba(167,139,250,0.18)' : 'rgba(124,58,237,0.14)',
+            nodeActive: dk ? '#c4b5fd' : '#5b21b6',
+            glowActive: dk ? 'rgba(196,181,253,0.38)' : 'rgba(91,33,182,0.30)',
+            edge:       dk ? 'rgba(167,139,250,0.07)' : 'rgba(124,58,237,0.065)',
+            pulse:      dk ? '#ede9fe' : '#6d28d9',
+            token:      dk ? 'rgba(167,139,250,0.55)' : 'rgba(109,40,217,0.42)',
+            label:      dk ? 'rgba(167,139,250,0.28)' : 'rgba(124,58,237,0.22)',
+            barTrack:   dk ? 'rgba(167,139,250,0.10)' : 'rgba(124,58,237,0.08)',
+            barFill:    dk ? 'rgba(167,139,250,0.55)' : 'rgba(124,58,237,0.45)',
+            barText:    dk ? 'rgba(196,181,253,0.55)' : 'rgba(109,40,217,0.5)',
+            };
+        }
+
+        function xy(n) { return [n.xF * canvas.width, n.yF * canvas.height]; }
+
+        function draw() {
+            const W = canvas.width, H = canvas.height;
+            if (!W || !H) { resize(); requestAnimationFrame(draw); return; }
+            ctx.clearRect(0, 0, W, H);
+            const c = pal();
+            tickBars();
+
+            // Layer labels at the bottom of canvas
+            ctx.textAlign = 'center';
+            const nL = LAYERS.length, xPad = 0.13;
+            LAYER_LABELS.forEach((lbl, li) => {
+            const xF = xPad + (li / (nL - 1)) * (1 - 2 * xPad);
+            ctx.font = '600 8.5px Inter, monospace';
+            ctx.fillStyle = c.label;
+            ctx.globalAlpha = 1;
+            ctx.fillText(lbl, xF * W, H * 0.93);
+            });
+            ctx.textAlign = 'left';
+
+            // Output confidence bars (right edge)
+            const barX0 = 0.885, barW = 0.09, barH = 0.025, barGap = 0.065;
+            OUT_LABELS.forEach((lbl, i) => {
+            const bx = barX0 * W, by = (0.28 + i * barGap) * H;
+            const bw = barW * W,  bh = barH * H;
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = c.barTrack;
+            ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 3); ctx.fill();
+            ctx.fillStyle = c.barFill;
+            ctx.beginPath(); ctx.roundRect(bx, by, bw * outBars[i].val, bh, 3); ctx.fill();
+            ctx.font = '600 8px Inter, monospace';
+            ctx.fillStyle = c.barText;
+            ctx.fillText(lbl, bx, by - 4);
+            ctx.fillText(Math.round(outBars[i].val * 100) + '%', bx + bw + 4, by + bh - 2);
+            });
+
+            // Drifting domain tokens
+            ctx.font = '500 10px Inter, monospace';
+            tokens.forEach(t => {
+            t.x += t.vx; t.y += t.vy;
+            if (t.x > 0.115) { t.x = 0.005; t.y = 0.1 + Math.random() * 0.8; }
+            if (t.y < 0.05 || t.y > 0.95) t.vy *= -1;
+            const fade = 1 - (t.x / 0.115);
+            ctx.fillStyle = c.token;
+            ctx.globalAlpha = t.alpha * fade;
+            ctx.fillText(t.label, t.x * W, t.y * H);
+            });
+            ctx.globalAlpha = 1;
+
+            // Edges
+            conns.forEach(con => {
+            const [ax, ay] = xy(nodes[con.from]);
+            const [bx, by] = xy(nodes[con.to]);
+            ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
+            ctx.strokeStyle = c.edge; ctx.lineWidth = 1; ctx.stroke();
+            });
+
+            // Pulses
+            conns.forEach(con => {
+            con.next--;
+            if (con.next <= 0) {
+                con.pulses.push({ t: 0, spd: 0.011 + Math.random() * 0.007 });
+                con.next = 50 + Math.random() * 130;
+            }
+            con.pulses = con.pulses.filter(p => p.t < 1);
+            con.pulses.forEach(p => {
+                p.t += p.spd;
+                const [ax, ay] = xy(nodes[con.from]);
+                const [bx, by] = xy(nodes[con.to]);
+                const px = ax + (bx - ax) * p.t, py = ay + (by - ay) * p.t;
+                if (p.t > 0.78) nodes[con.to].act = Math.min(1, nodes[con.to].act + 0.045);
+                const a = Math.sin(p.t * Math.PI);
+                ctx.beginPath(); ctx.arc(px, py, 2.5 + a * 1.2, 0, Math.PI * 2);
+                ctx.fillStyle = c.pulse; ctx.globalAlpha = a * 0.9; ctx.fill(); ctx.globalAlpha = 1;
+            });
+            });
+
+            // Nodes
+            nodes.forEach(n => {
+            n.act   = Math.max(0, n.act - 0.017);
+            n.phase += 0.016;
+            const [x, y] = xy(n);
+            const isEdge = n.li === 0 || n.li === LAYERS.length - 1;
+            const r      = (isEdge ? 5.8 : 4.2) + Math.sin(n.phase) * 1.1 + n.act * 3.5;
+            const glowR  = r + (n.act > 0.1 ? 8 : 4.5);
+            const grd    = ctx.createRadialGradient(x, y, 0, x, y, glowR * 1.8);
+            grd.addColorStop(0, n.act > 0.1 ? c.glowActive : c.glow);
+            grd.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.beginPath(); ctx.arc(x, y, glowR * 1.8, 0, Math.PI * 2); ctx.fillStyle = grd; ctx.fill();
+            ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fillStyle = n.act > 0.2 ? c.nodeActive : c.node;
+            ctx.globalAlpha = 0.84 + n.act * 0.16; ctx.fill(); ctx.globalAlpha = 1;
+            });
+
+            requestAnimationFrame(draw);
+        }
+        draw();
+        }
+
+        /* --- SKILLS RADAR CANVAS (removed) --- */
+        function initSkillsRadar() {
+            // replaced by domain focus cards
+            const skills = [];
+
+            const N      = skills.length;
+            const cx     = canvas.width  / 2;
+            const cy     = canvas.height / 2;
+            const maxR   = Math.min(cx, cy) * 0.60;
+            const rings  = 4;
+            let   animPct = 0;   // 0 → 1 on first intersection
+
+            function pal() {
+                const dk = document.documentElement.getAttribute('data-theme') === 'dark'
+                        || (!document.documentElement.getAttribute('data-theme')
+                            && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                return {
+                    grid:    dk ? 'rgba(167,139,250,0.12)' : 'rgba(124,58,237,0.10)',
+                    fill:    dk ? 'rgba(167,139,250,0.22)' : 'rgba(124,58,237,0.18)',
+                    stroke:  dk ? '#a78bfa' : '#7c3aed',
+                    dot:     dk ? '#c4b5fd' : '#5b21b6',
+                    label:   dk ? '#c4b5fd' : '#4c1d95',
+                    ring:    dk ? 'rgba(167,139,250,0.07)' : 'rgba(124,58,237,0.07)',
+                };
+            }
+
+            function angleFor(i) { return (i / N) * Math.PI * 2 - Math.PI / 2; }
+
+            function drawFrame(pct) {
+                const c = pal();
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Ring grid
+                for (let r = 1; r <= rings; r++) {
+                    const radius = (r / rings) * maxR;
+                    ctx.beginPath();
+                    for (let i = 0; i < N; i++) {
+                        const a = angleFor(i);
+                        i === 0 ? ctx.moveTo(cx + Math.cos(a) * radius, cy + Math.sin(a) * radius)
+                                : ctx.lineTo(cx + Math.cos(a) * radius, cy + Math.sin(a) * radius);
+                    }
+                    ctx.closePath();
+                    ctx.strokeStyle = c.grid;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+
+                // Spokes
+                skills.forEach((_, i) => {
+                    const a = angleFor(i);
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.lineTo(cx + Math.cos(a) * maxR, cy + Math.sin(a) * maxR);
+                    ctx.strokeStyle = c.ring;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+
+                // Filled skill polygon (animated)
+                ctx.beginPath();
+                skills.forEach((s, i) => {
+                    const a = angleFor(i);
+                    const r = s.value * pct * maxR;
+                    i === 0 ? ctx.moveTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r)
+                            : ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+                });
+                ctx.closePath();
+                ctx.fillStyle   = c.fill;
+                ctx.fill();
+                ctx.strokeStyle = c.stroke;
+                ctx.lineWidth   = 2;
+                ctx.stroke();
+
+                // Dots + labels
+                skills.forEach((s, i) => {
+                    const a = angleFor(i);
+                    const r = s.value * pct * maxR;
+                    const dx = cx + Math.cos(a) * r;
+                    const dy = cy + Math.sin(a) * r;
+
+                    ctx.beginPath();
+                    ctx.arc(dx, dy, 3.5, 0, Math.PI * 2);
+                    ctx.fillStyle = c.dot;
+                    ctx.fill();
+
+                    // Labels at full spoke length (don't animate label position)
+                    const labelR = maxR + 28;
+                    const lx = cx + Math.cos(a) * labelR;
+                    const ly = cy + Math.sin(a) * labelR;
+                    ctx.font = '600 9.5px Inter, sans-serif';
+                    ctx.fillStyle   = c.label;
+                    ctx.textAlign   = Math.cos(a) > 0.1  ? 'left'
+                                    : Math.cos(a) < -0.1 ? 'right'
+                                    :                       'center';
+                    ctx.textBaseline = Math.sin(a) > 0.1  ? 'top'
+                                    : Math.sin(a) < -0.1 ? 'bottom'
+                                    :                      'middle';
+                    ctx.fillText(s.label, lx, ly);
+                });
+            }
+
+            // Animate in over ~900ms when first visible
+            function startAnimation() {
+                if (animPct >= 1) return;
+                const duration = 900;
+                const start    = performance.now();
+                function step(now) {
+                    animPct = Math.min((now - start) / duration, 1);
+                    // Ease out cubic
+                    const ease = 1 - Math.pow(1 - animPct, 3);
+                    drawFrame(ease);
+                    if (animPct < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+
+            // Draw static first frame at 0 so canvas isn't blank before scroll
+            drawFrame(0);
+
+            // Trigger animation when the canvas enters the viewport
+            const observer = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting) {
+                    startAnimation();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.3 });
+            observer.observe(canvas);
+
+            // Redraw on theme toggle (re-draw at current pct)
+            document.getElementById('themeToggle')?.addEventListener('click', () => {
+                setTimeout(() => drawFrame(animPct >= 1 ? 1 : animPct), 50);
+            });
+        }
+
+        window.addEventListener('load', initHeroCanvas);
+
+
+        // --- MAGNETIC BUTTON ---
+
+        function initMagnetButton() {
+            const btn = document.getElementById('heroBtn');
+            if (!btn) return;
+
+            const particles = [];
+            for (let i = 0; i < 12; i++) {
+                const el = document.createElement('span');
+                el.className = 'magnet-particle';
+                const x = Math.random() * 300 - 150;
+                const y = Math.random() * 180 - 90;
+                const delay = Math.random() * 60;
+                el.style.cssText = `
+                    transform: translate(calc(-50% + ${x}px), calc(-50% + ${y}px));
+                    transition-delay: ${delay}ms;
+                `;
+                particles.push({ el, x, y });
+                btn.insertBefore(el, btn.firstChild);
+            }
+
+            btn.addEventListener('mouseenter', () => {
+                btn.classList.add('attracting');
+                particles.forEach(p => {
+                    p.el.style.transform = 'translate(-50%, -50%)';
+                });
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('attracting');
+                particles.forEach(p => {
+                    p.el.style.transform = `translate(calc(-50% + ${p.x}px), calc(-50% + ${p.y}px))`;
+                });
+            });
+        }
+
+        initMagnetButton();
+
+        // --- TYPED.JS HERO SUBTITLE ---
+        new Typed('#typed-focus', {
+            strings: [
+                'Building credit underwriting engines.',
+                'Designing recommendation systems from scratch.',
+                'Fine-tuning transformers on domain-specific text.',
+                'Turning behavioral data into product decisions.',
+                'Engineering pipelines that go end-to-end.',
+            ],
+            typeSpeed:    46,
+            backSpeed:    24,
+            backDelay:    2000,
+            startDelay:   400,
+            loop:         true,
+            smartBackspace: false,
+        });
+
+
         // --- ACTIVE NAV ON SCROLL ---
 
         const sectionObserver = new IntersectionObserver((entries) => {
@@ -300,6 +1005,7 @@
                     document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
                     document.querySelectorAll(`.nav-item[href="#${entry.target.id}"]`)
                         .forEach(item => item.classList.add('active'));
+                    // updateNavDomainAccent is triggered by MutationObserver in initSlidingPill
                 }
             });
         }, { threshold: 0.15, rootMargin: '-80px 0px -35% 0px' });
@@ -308,10 +1014,22 @@
             const el = document.getElementById(id);
             if (el) sectionObserver.observe(el);
         });
+
+        initSlidingPill();
+
+        // --- SCROLL FADE-IN ---
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target); // fire once, then stop watching
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in-section').forEach(el => fadeObserver.observe(el));
+
     </script>
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-    <div id="lightbox">
-        <div id="lightbox-content"></div>
-    </div>
+
 </body>
 </html>
